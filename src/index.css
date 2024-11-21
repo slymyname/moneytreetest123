@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    height: -webkit-fill-available;
+  }
+
+  body {
+    @apply antialiased min-h-screen min-h-[-webkit-fill-available];
+    touch-action: manipulation;
+  }
+
+  /* Improve touch targets on mobile */
+  button, a, select, input[type="checkbox"], input[type="radio"] {
+    @apply cursor-pointer;
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+  }
+
+  /* Adjust input sizes for better mobile experience */
+  input:not([type="checkbox"]):not([type="radio"]),
+  select,
+  textarea {
+    @apply text-base sm:text-sm;
+    min-height: 44px;
+  }
+
+  /* Prevent text size adjustment on orientation change */
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  .dark {
+    color-scheme: dark;
+  }
+
+  /* Ensure better text contrast in dark mode */
+  .dark {
+    @apply text-white;
+  }
+
+  .dark h1, 
+  .dark h2, 
+  .dark h3, 
+  .dark h4, 
+  .dark h5, 
+  .dark h6 {
+    @apply text-white;
+  }
+
+  .dark p,
+  .dark label,
+  .dark span:not([class*="text-"]) {
+    @apply text-white;
+  }
+
+  .dark .text-gray-500,
+  .dark .text-gray-600,
+  .dark .text-gray-700 {
+    @apply text-white;
+  }
+
+  .dark input,
+  .dark select,
+  .dark textarea {
+    @apply text-white bg-gray-800 border-gray-700;
+  }
+
+  .dark input::placeholder,
+  .dark textarea::placeholder {
+    @apply text-gray-400;
+  }
+
+  /* Light mode text improvements */
+  .text-gray-500,
+  .text-gray-600,
+  .text-gray-700 {
+    @apply text-black;
+  }
+
+  /* Improve scrolling on iOS */
+  .overflow-y-auto,
+  .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@layer components {
+  .search-bar {
+    @apply w-full px-4 py-2 pl-10 pr-12 
+           text-base sm:text-sm text-black
+           bg-white/80 dark:bg-gray-800/80 
+           border border-gray-200 dark:border-gray-700 
+           rounded-full 
+           shadow-sm 
+           backdrop-blur-sm
+           transition-all duration-200
+           focus:outline-none 
+           focus:ring-2 
+           focus:ring-green-500/50 
+           focus:border-green-500
+           dark:text-white
+           dark:placeholder-gray-400
+           min-h-[44px];
+  }
+
+  .search-bar:focus {
+    @apply w-[110%] -translate-x-[5%];
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center
+           px-4 py-2 
+           text-base sm:text-sm font-medium 
+           text-white
+           bg-gradient-to-r from-green-600 to-yellow-500
+           rounded-full
+           shadow-sm
+           transition-all duration-200
+           hover:from-green-700 hover:to-yellow-600
+           hover:shadow-md
+           focus:outline-none 
+           focus:ring-2 
+           focus:ring-green-500 
+           focus:ring-offset-2
+           dark:focus:ring-offset-gray-900
+           touch-manipulation
+           min-h-[44px];
+  }
+
+  .btn-outline {
+    @apply bg-none bg-transparent
+           border-2 border-green-600
+           text-green-600
+           hover:bg-green-50
+           hover:text-green-700
+           hover:border-green-700
+           dark:text-green-400
+           dark:border-green-400
+           dark:hover:bg-green-950/50
+           dark:hover:text-green-300
+           dark:hover:border-green-300;
+  }
+
+  .card {
+    @apply bg-white/80 dark:bg-gray-800/80
+           backdrop-blur-sm
+           rounded-2xl
+           shadow-lg
+           border border-gray-100 dark:border-gray-700
+           transition-all duration-200
+           hover:shadow-xl;
+  }
+
+  .nav-link {
+    @apply relative flex items-center gap-2
+           px-4 py-2
+           text-base sm:text-sm font-medium
+           text-black dark:text-white
+           rounded-full
+           transition-all duration-200
+           hover:text-black dark:hover:text-white
+           hover:bg-gray-100 dark:hover:bg-gray-800
+           touch-manipulation
+           min-h-[44px];
+  }
+
+  .nav-link.active {
+    @apply bg-gradient-to-r from-green-600 to-yellow-500
+           text-white dark:text-white;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .card {
+    @apply hover:transform-none;
+  }
+
+  .btn:hover {
+    @apply transform-none;
+  }
+
+  /* Improve tap targets */
+  .btn, .nav-link, select, input, textarea {
+    @apply touch-manipulation;
+  }
+
+  /* Prevent pull-to-refresh on iOS */
+  body {
+    overscroll-behavior-y: none;
+  }
+
+  /* Disable hover effects on mobile */
+  @media (hover: none) {
+    .hover\:* {
+      @apply transition-none transform-none;
+    }
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out;
+}

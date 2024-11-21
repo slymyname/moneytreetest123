@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <g>
+    <path fill="#4CAF50" d="M350 200c0 0-50-100-150-100s-150 100-150 100c0 0 50-50 150-50s150 50 150 50z"/>
+    <path fill="#388E3C" d="M350 250c0 0-50-100-150-100s-150 100-150 100c0 0 50-50 150-50s150 50 150 50z"/>
+    <path fill="#4CAF50" d="M350 300c0 0-50-100-150-100s-150 100-150 100c0 0 50-50 150-50s150 50 150 50z"/>
+    <g fill="#FFD700">
+      <circle cx="200" cy="180" r="20"/>
+      <circle cx="250" cy="220" r="20"/>
+      <circle cx="180" cy="240" r="20"/>
+      <circle cx="220" cy="280" r="20"/>
+      <circle cx="160" cy="300" r="20"/>
+      <circle cx="240" cy="320" r="20"/>
+    </g>
+    <g fill="#FFC107">
+      <circle cx="180" cy="380" r="15"/>
+      <circle cx="220" cy="380" r="15"/>
+      <circle cx="260" cy="380" r="15"/>
+    </g>
+    <path fill="#795548" d="M200 350v50h20v-50z"/>
+  </g>
+</svg>
